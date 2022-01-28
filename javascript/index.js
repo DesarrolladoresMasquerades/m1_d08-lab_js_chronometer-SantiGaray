@@ -17,6 +17,7 @@ function printTime() {
   printMinutes()
   printSeconds()
 
+
 }
 
 function printMinutes() {
@@ -54,7 +55,18 @@ function printSplit() {
 }
 
 function clearSplits() {
-  // ... your code goes here
+
+  //-------- delete old ones ---------
+
+  document.getElementById("splits").remove()
+
+  //---------create new ones
+
+  const newsOl = document.createElement('ol');
+
+  newsOl.id = "splits"
+
+  document.getElementById("splits-container").appendChild(newsOl)
 }
 
 function setStopBtn() {
@@ -97,6 +109,11 @@ btnLeftElement.addEventListener('click', () => {
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
   
-if (btnRightElement.innerText === "SPLIT") {printSplit()}
+    if (btnRightElement.innerText === "SPLIT") {
+      printSplit()
+    } else { 
+            chronometer.reset(printTime)
+            clearSplits()
+    }
 
 });
